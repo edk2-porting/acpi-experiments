@@ -1,0 +1,33 @@
+#line 2 "./Fadt.aslc" // #include
+#line 3 "./Fadt.aslc" // #include
+#line 4 "./Fadt.aslc" // #include
+#line 1 "./Platform.h"
+/** @file
+*
+*  Copyright (c) 2013-2017, ARM Limited. All rights reserved.
+*
+*  This program and the accompanying materials
+*  are licensed and made available under the terms and conditions of the BSD License
+*  which accompanies this distribution.  The full text of the license may be found at
+*  http://opensource.org/licenses/bsd-license.php
+*
+*  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+*
+**/
+
+#line 16 "./Platform.h" // #ifndef
+#line 17 "./Platform.h" // #define
+
+//
+// ACPI table information used to initialize tables.
+//
+#line 22 "./Platform.h" // #define
+#line 23 "./Platform.h" // #define
+#line 24 "./Platform.h" // #define
+#line 25 "./Platform.h" // #define
+#line 26 "./Platform.h" // #define
+
+// A macro to initialise the common header part of EFI ACPI tables as defined by
+// EFI_ACPI_DESCRIPTION_HEADER structure.
+#line 30 "./Platform.h" // #define
