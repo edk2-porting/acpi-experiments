@@ -29,15 +29,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
     External (_SB_.I2C8.WS01, UnknownObj)
     External (_SB_.MUT0, UnknownObj)
     External (_SB_.PMBM, UnknownObj)
-    External (_SB_.TZ98, UnknownObj)
-    External (_SB_.TZ98._PSV, IntObj)
-    External (_SB_.TZ98._TC1, IntObj)
-    External (_SB_.TZ98._TC2, IntObj)
-    External (_SB_.TZ98._TSP, IntObj)
-    External (_SB_.TZ98.TPSV, UnknownObj)
-    External (_SB_.TZ98.TTC1, UnknownObj)
-    External (_SB_.TZ98.TTC2, UnknownObj)
-    External (_SB_.TZ98.TTSP, UnknownObj)
     External (PCF1, IntObj)
     External (PCF2, IntObj)
     External (PCF3, IntObj)
@@ -72,7 +63,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
         Name (TCML, 0x00A00000)
         Name (SOSI, 0x0000000086007210)
         Name (AVER, "P012")
-        Device (UFS0)
+        Device (UFS0)  //checked
         {
             Name (_DEP, Package (One)  // _DEP: Dependencies
             {
@@ -113,60 +104,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (SDC2)
-        {
-            Name (_DEP, Package (0x02)  // _DEP: Dependencies
-            {
-                \_SB.PEP0, 
-                \_SB.GIO0
-            })
-            Name (_HID, "QCOM2466")  // _HID: Hardware ID
-            Alias (\_SB.PSUB, _SUB)
-            Name (_CID, "ACPIQCOM2466")  // _CID: Compatible ID
-            Name (_UID, One)  // _UID: Unique ID
-            Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
-            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
-            {
-                Name (RBUF, ResourceTemplate ()
-                {
-                    Memory32Fixed (ReadWrite,
-                        0x08804000,         // Address Base
-                        0x00001000,         // Address Length
-                        )
-                    Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
-                    {
-                        0x000000EC,
-                    }
-                    GpioInt (Edge, ActiveBoth, SharedAndWake, PullUp, 0x7530,
-                        "\\_SB.GIO0", 0x00, ResourceConsumer, ,
-                        )
-                        {   // Pin list
-                            0x003C
-                        }
-                    GpioIo (Shared, PullUp, 0x0000, 0x0000, IoRestrictionNone,
-                        "\\_SB.GIO0", 0x00, ResourceConsumer, ,
-                        RawDataBuffer (0x01)  // Vendor Data
-                        {
-                            0x01
-                        })
-                        {   // Pin list
-                            0x007E
-                        }
-                })
-                Return (RBUF) /* \_SB_.SDC2._CRS.RBUF */
-            }
-
-            Method (_DIS, 0, NotSerialized)  // _DIS: Disable Device
-            {
-            }
-
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                Return (0x0F)
-            }
-        }
-
-        Device (ABD)
+        Device (ABD)  //checked
         {
             Name (_DEP, Package (One)  // _DEP: Dependencies
             {
@@ -193,7 +131,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
 
         Name (ESNL, 0x14)
         Name (DBFL, 0x17)
-        Device (PMIC)
+        Device (PMIC)  //checked
         {
             Name (_DEP, Package (One)  // _DEP: Dependencies
             {
@@ -233,7 +171,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (PM01)
+        Device (PM01)  //UNchecked
         {
             Name (_HID, "QCOM0269")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -309,7 +247,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (PMAP)
+        Device (PMAP)  //Uncheck
         {
             Name (_HID, "QCOM0268")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -343,7 +281,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (PRTC)
+        Device (PRTC)  //checked
         {
             Name (_HID, "ACPI000E" /* Time and Alarm Device */)  // _HID: Hardware ID
             Name (_DEP, Package (0x01)  // _DEP: Dependencies
@@ -405,650 +343,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
         Device (PEP0)
         {
             Name (_HID, "QCOM0237")  // _HID: Hardware ID
-            Name (_CID, "PNP0D80" /* Windows-compatible System Power Management Controller */)  // _CID: Compatible ID
-            Method (THTZ, 4, NotSerialized)
+            Name (_DEP, Package (0x01)  // _DEP: Dependencies
             {
-                While (One)
-                {
-                    Name (_T_0, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == One))
-                    {
-                        While (One)
-                        {
-                            Name (_T_1, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_1 = ToInteger (Arg3)
-                            If ((_T_1 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ1.TPSV = Arg1
-                                    Notify (\_SB.TZ1, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ1._PSV ())
-                            }
-                            ElseIf ((_T_1 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ1.TTSP = Arg1
-                                    Notify (\_SB.TZ1, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ1._TSP ())
-                            }
-                            ElseIf ((_T_1 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ1.TTC1 = Arg1
-                                    Notify (\_SB.TZ1, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ1._TC1 ())
-                            }
-                            ElseIf ((_T_1 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ1.TTC2 = Arg1
-                                    Notify (\_SB.TZ1, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ1._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x03))
-                    {
-                        While (One)
-                        {
-                            Name (_T_2, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_2 = ToInteger (Arg3)
-                            If ((_T_2 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ3.TPSV = Arg1
-                                    Notify (\_SB.TZ3, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ3._PSV ())
-                            }
-                            ElseIf ((_T_2 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ3.TTSP = Arg1
-                                    Notify (\_SB.TZ3, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ3._TSP ())
-                            }
-                            ElseIf ((_T_2 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ3.TTC1 = Arg1
-                                    Notify (\_SB.TZ3, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ3._TC1 ())
-                            }
-                            ElseIf ((_T_2 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ3.TTC2 = Arg1
-                                    Notify (\_SB.TZ3, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ3._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x14))
-                    {
-                        While (One)
-                        {
-                            Name (_T_3, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_3 = ToInteger (Arg3)
-                            If ((_T_3 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ20.TPSV = Arg1
-                                    Notify (\_SB.TZ20, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ20._PSV ())
-                            }
-                            ElseIf ((_T_3 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ20.TTSP = Arg1
-                                    Notify (\_SB.TZ20, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ20._TSP ())
-                            }
-                            ElseIf ((_T_3 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ20.TTC1 = Arg1
-                                    Notify (\_SB.TZ20, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ20._TC1 ())
-                            }
-                            ElseIf ((_T_3 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ20.TTC2 = Arg1
-                                    Notify (\_SB.TZ20, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ20._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x15))
-                    {
-                        While (One)
-                        {
-                            Name (_T_4, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_4 = ToInteger (Arg3)
-                            If ((_T_4 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ21.TPSV = Arg1
-                                    Notify (\_SB.TZ21, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ21._PSV ())
-                            }
-                            ElseIf ((_T_4 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ21.TTSP = Arg1
-                                    Notify (\_SB.TZ21, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ21._TSP ())
-                            }
-                            ElseIf ((_T_4 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ21.TTC1 = Arg1
-                                    Notify (\_SB.TZ21, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ21._TC1 ())
-                            }
-                            ElseIf ((_T_4 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ21.TTC2 = Arg1
-                                    Notify (\_SB.TZ21, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ21._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x21))
-                    {
-                        While (One)
-                        {
-                            Name (_T_5, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_5 = ToInteger (Arg3)
-                            If ((_T_5 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ33.TPSV = Arg1
-                                    Notify (\_SB.TZ33, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ33._PSV ())
-                            }
-                            ElseIf ((_T_5 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ33.TTSP = Arg1
-                                    Notify (\_SB.TZ33, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ33._TSP ())
-                            }
-                            ElseIf ((_T_5 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ33.TTC1 = Arg1
-                                    Notify (\_SB.TZ33, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ33._TC1 ())
-                            }
-                            ElseIf ((_T_5 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ33.TTC2 = Arg1
-                                    Notify (\_SB.TZ33, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ33._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x24))
-                    {
-                        While (One)
-                        {
-                            Name (_T_6, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_6 = ToInteger (Arg3)
-                            If ((_T_6 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ36.TPSV = Arg1
-                                    Notify (\_SB.TZ36, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ36._PSV ())
-                            }
-                            ElseIf ((_T_6 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ36.TTSP = Arg1
-                                    Notify (\_SB.TZ36, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ36._TSP ())
-                            }
-                            ElseIf ((_T_6 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ36.TTC1 = Arg1
-                                    Notify (\_SB.TZ36, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ36._TC1 ())
-                            }
-                            ElseIf ((_T_6 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ36.TTC2 = Arg1
-                                    Notify (\_SB.TZ36, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ36._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x25))
-                    {
-                        While (One)
-                        {
-                            Name (_T_7, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_7 = ToInteger (Arg3)
-                            If ((_T_7 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ37.TPSV = Arg1
-                                    Notify (\_SB.TZ37, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ37._PSV ())
-                            }
-                            ElseIf ((_T_7 == One))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ37.TCRT = Arg1
-                                    Notify (\_SB.TZ37, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ37._CRT ())
-                            }
-                            ElseIf ((_T_7 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ37.TTSP = Arg1
-                                    Notify (\_SB.TZ37, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ37._TSP ())
-                            }
-                            ElseIf ((_T_7 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ37.TTC1 = Arg1
-                                    Notify (\_SB.TZ37, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ37._TC1 ())
-                            }
-                            ElseIf ((_T_7 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ37.TTC2 = Arg1
-                                    Notify (\_SB.TZ37, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ37._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x26))
-                    {
-                        While (One)
-                        {
-                            Name (_T_8, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_8 = ToInteger (Arg3)
-                            If ((_T_8 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ38.TPSV = Arg1
-                                    Notify (\_SB.TZ38, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ38._PSV ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x28))
-                    {
-                        While (One)
-                        {
-                            Name (_T_9, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_9 = ToInteger (Arg3)
-                            If ((_T_9 == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ40.TPSV = Arg1
-                                    Notify (\_SB.TZ40, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ40._PSV ())
-                            }
-                            ElseIf ((_T_9 == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ40.TTSP = Arg1
-                                    Notify (\_SB.TZ40, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ40._TSP ())
-                            }
-                            ElseIf ((_T_9 == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ40.TTC1 = Arg1
-                                    Notify (\_SB.TZ40, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ40._TC1 ())
-                            }
-                            ElseIf ((_T_9 == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ40.TTC2 = Arg1
-                                    Notify (\_SB.TZ40, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ40._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x2C))
-                    {
-                        While (One)
-                        {
-                            Name (_T_A, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_A = ToInteger (Arg3)
-                            If ((_T_A == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ44.TPSV = Arg1
-                                    Notify (\_SB.TZ44, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ44._PSV ())
-                            }
-                            ElseIf ((_T_A == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ44.TTSP = Arg1
-                                    Notify (\_SB.TZ44, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ44._TSP ())
-                            }
-                            ElseIf ((_T_A == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ44.TTC1 = Arg1
-                                    Notify (\_SB.TZ44, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ44._TC1 ())
-                            }
-                            ElseIf ((_T_A == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ44.TTC2 = Arg1
-                                    Notify (\_SB.TZ44, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ44._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x62))
-                    {
-                        While (One)
-                        {
-                            Name (_T_B, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_B = ToInteger (Arg3)
-                            If ((_T_B == Zero))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ98.TPSV = Arg1
-                                    Notify (\_SB.TZ98, 0x81) // Information Change
-                                }
-
-                                Return (\_SB.TZ98._PSV) /* External reference */
-                            }
-                            ElseIf ((_T_B == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ98.TTSP = Arg1
-                                    Notify (\_SB.TZ98, 0x81) // Information Change
-                                }
-
-                                Return (\_SB.TZ98._TSP) /* External reference */
-                            }
-                            ElseIf ((_T_B == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ98.TTC1 = Arg1
-                                    Notify (\_SB.TZ98, 0x81) // Information Change
-                                }
-
-                                Return (\_SB.TZ98._TC1) /* External reference */
-                            }
-                            ElseIf ((_T_B == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ98.TTC2 = Arg1
-                                    Notify (\_SB.TZ98, 0x81) // Information Change
-                                }
-
-                                Return (\_SB.TZ98._TC2) /* External reference */
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == 0x63))
-                    {
-                        While (One)
-                        {
-                            Name (_T_C, 0x00)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_C = ToInteger (Arg3)
-                            If ((_T_C == One))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ99.TCRT = Arg1
-                                    Notify (\_SB.TZ99, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ99._CRT ())
-                            }
-                            ElseIf ((_T_C == 0x02))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ99.TTSP = Arg1
-                                    Notify (\_SB.TZ99, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ99._TSP ())
-                            }
-                            ElseIf ((_T_C == 0x03))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ99.TTC1 = Arg1
-                                    Notify (\_SB.TZ99, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ99._TC1 ())
-                            }
-                            ElseIf ((_T_C == 0x04))
-                            {
-                                If (Arg2)
-                                {
-                                    \_SB.TZ99.TTC2 = Arg1
-                                    Notify (\_SB.TZ99, 0x81) // Thermal Trip Point Change
-                                }
-
-                                Return (\_SB.TZ99._TC2 ())
-                            }
-                            Else
-                            {
-                                Return (0xFFFF)
-                            }
-
-                            Break
-                        }
-                    }
-                    Else
-                    {
-                        Return (0xFFFF)
-                    }
-
-                    Break
-                }
-            }
-
+                \_SB.PMIC
+            })
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
                 Return (ResourceTemplate ()
@@ -45168,7 +44466,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             })
         }
 
-        Device (BAM1)
+        Device (BAM1)  //Checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -45191,7 +44489,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (BAM5)
+        Device (BAM5)  //checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -45214,7 +44512,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (BAM6)
+        Device (BAM6)  //checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -45237,7 +44535,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
             }
         }
 
-        Device (BAM7)
+        Device (BAM7)  //checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -45258,33 +44556,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
                 })
                 Return (RBUF) /* \_SB_.BAM7._CRS.RBUF */
             }
-        }
+        }    
 
-        Device (BAMD)
-        {
-            Name (_HID, "QCOM0213")  // _HID: Hardware ID
-            Alias (\_SB.PSUB, _SUB)
-            Name (_UID, 0x0D)  // _UID: Unique ID
-            Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
-            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
-            {
-                Name (RBUF, ResourceTemplate ()
-                {
-                    Memory32Fixed (ReadWrite,
-                        0x0A904000,         // Address Base
-                        0x00017000,         // Address Length
-                        )
-                    Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
-                    {
-                        0x000000A9,
-                    }
-                })
-                Return (RBUF) // \_SB_.BAMD._CRS.RBUF
-            }
-        }
-    
-
-        Device (BAME)
+        Device (BAME)  //checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
@@ -45300,14 +44574,14 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "QCOM", "SDM850 ", 0x00000003)
                         )
                     Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
                     {
-                        0x000000C7,
+                        0x0000012E,
                     }
                 })
                 Return (RBUF) /* \_SB_.BAME._CRS.RBUF */
             }
         }
 
-        Device (BAMF)
+        Device (BAMF)  //checked
         {
             Name (_HID, "QCOM0213")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
