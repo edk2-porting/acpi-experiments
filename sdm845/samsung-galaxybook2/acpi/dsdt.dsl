@@ -1,17 +1,17 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20190509 (32-bit version)
- * Copyright (c) 2000 - 2019 Intel Corporation
+ * AML/ASL+ Disassembler version 20200326 (64-bit version)
+ * Copyright (c) 2000 - 2020 Intel Corporation
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of ./dsdt.dat, Fri Jul 05 08:56:56 2019
+ * Disassembly of DSDT.bin, Wed May 13 07:18:33 2020
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00044368 (279400)
+ *     Length           0x000443C6 (279494)
  *     Revision         0x02
- *     Checksum         0x20
+ *     Checksum         0xEE
  *     OEM ID           "QCOMM "
  *     OEM Table ID     "SDM850 "
  *     OEM Revision     0x00000003 (3)
@@ -64,13 +64,15 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
         Name (SDFE, 0x004F)
         Name (SFES, "899800000000000")
         Name (SIDM, 0x0000000FFFFF00FF)
-        Name (SOSN, 0x000003F48D126594)
+        Name (SOSN, 0x000003F4A279541D)
         Name (RMTB, 0x85D00000)
         Name (RMTX, 0x00200000)
         Name (RFMB, 0x00000000)
         Name (RFMS, 0x00000000)
         Name (RFAB, 0x00000000)
         Name (RFAS, 0x00000000)
+        Name (TPMA, 0x11111111)
+        Name (TDTV, 0x6654504D)
         Name (TCMA, 0x8B500000)
         Name (TCML, 0x00A00000)
         Name (SOSI, 0x000000008600B8D8)
@@ -2987,8 +2989,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         Zero, 
                         0x002DB400, 
                         0x0D02, 
-                        0x0DF7, 
-                        0x0DFC
+                        0x0E5B, 
+                        0x0E60
                     }, 
 
                     Package (0x06)
@@ -2997,8 +2999,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         Zero, 
                         0x002DB400, 
                         0x0D02, 
-                        0x0DF7, 
-                        0x0DFC
+                        0x0E5B, 
+                        0x0E60
                     }
                 }
             })
@@ -32793,7 +32795,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         }
                     }, 
 
-                    Package (0x10)
+                    Package (0x0F)
                     {
                         "DSTATE", 
                         Zero, 
@@ -32867,16 +32869,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             Package (0x02)
                             {
                                 "gcc_aggre_noc_pcie_tbu_clk", 
-                                One
-                            }
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "CLOCK", 
-                            Package (0x02)
-                            {
-                                "gcc_pcie_phy_refgen_clk", 
                                 One
                             }
                         }, 
@@ -32966,7 +32958,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         0x02
                     }, 
 
-                    Package (0x10)
+                    Package (0x0F)
                     {
                         "DSTATE", 
                         0x03, 
@@ -33036,16 +33028,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             Package (0x02)
                             {
                                 "gcc_aggre_noc_pcie_tbu_clk", 
-                                0x02
-                            }
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "CLOCK", 
-                            Package (0x02)
-                            {
-                                "gcc_pcie_phy_refgen_clk", 
                                 0x02
                             }
                         }, 
@@ -33276,16 +33258,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             "CLOCK", 
                             Package (0x02)
                             {
-                                "gcc_pcie_phy_refgen_clk", 
-                                One
-                            }
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "CLOCK", 
-                            Package (0x02)
-                            {
                                 "gcc_pcie_phy_aux_clk", 
                                 One
                             }
@@ -33351,6 +33323,18 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                                 0x0124F800, 
                                 0x03
                             }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x04)
+                            {
+                                "gcc_pcie_phy_refgen_clk", 
+                                0x08, 
+                                0x05F5E100, 
+                                0x03
+                            }
                         }
                     }, 
 
@@ -33376,6 +33360,16 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             Package (0x02)
                             {
                                 "gcc_pcie_1_pipe_clk", 
+                                0x02
+                            }
+                        }, 
+
+                        Package (0x02)
+                        {
+                            "CLOCK", 
+                            Package (0x02)
+                            {
+                                "gcc_pcie_phy_refgen_clk", 
                                 0x02
                             }
                         }, 
@@ -33436,16 +33430,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             Package (0x02)
                             {
                                 "gcc_aggre_noc_pcie_tbu_clk", 
-                                0x02
-                            }
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "CLOCK", 
-                            Package (0x02)
-                            {
-                                "gcc_pcie_phy_refgen_clk", 
                                 0x02
                             }
                         }, 
@@ -49130,13 +49114,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                     })
                 }
 
-                OperationRegion (WOPR, 0x80, Zero, 0x10)
-                Field (WOPR, DWordAcc, NoLock, Preserve)
-                {
-                    Offset (0x04), 
-                    WTRG,   32
-                }
-
                 PowerResource (WRST, 0x05, 0x0000)
                 {
                     Method (_ON, 0, NotSerialized)  // _ON_: Power On
@@ -49154,7 +49131,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
 
                     Method (_RST, 0, NotSerialized)  // _RST: Device Reset
                     {
-                        WTRG = 0xABCD
                     }
                 }
             }
@@ -49795,7 +49771,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                 {
                     0x03, 
                     0x02, 
-                    0x003B0014, 
+                    0x00440017, 
                     Package (0x08)
                     {
                         "ENGINES", 
@@ -50280,14 +50256,20 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             }
                         }, 
 
-                        Package (0x0F)
+                        Package (0x22)
                         {
                             "PRIMARY_SOURCE_MODES", 
-                            0x0D, 
+                            0x20, 
                             Package (0x02)
                             {
                                 0x0280, 
                                 0x01E0
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0280, 
+                                0x0168
                             }, 
 
                             Package (0x02)
@@ -50298,8 +50280,20 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
 
                             Package (0x02)
                             {
+                                0x03C0, 
+                                0x021C
+                            }, 
+
+                            Package (0x02)
+                            {
                                 0x0500, 
                                 0x02D0
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0500, 
+                                0x0438
                             }, 
 
                             Package (0x02)
@@ -50360,6 +50354,102 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             {
                                 0x0780, 
                                 0x0500
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0800, 
+                                0x0438
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0800, 
+                                0x0480
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0800, 
+                                0x0600
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0A00, 
+                                0x0438
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0A00, 
+                                0x0640
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0A00, 
+                                0x05A0
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0A00, 
+                                0x0800
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0C80, 
+                                0x0708
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0C80, 
+                                0x0960
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0C80, 
+                                0x0800
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0D70, 
+                                0x05A0
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0F00, 
+                                0x0438
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0F00, 
+                                0x0640
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0F00, 
+                                0x0960
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x0F00, 
+                                0x0870
+                            }, 
+
+                            Package (0x02)
+                            {
+                                0x1000, 
+                                0x0870
                             }
                         }
                     }, 
@@ -50419,8 +50509,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             Zero, 
                             Zero, 
                             Zero, 
-                            0x80100000, 
-                            0x7FF00000
+                            0x40100000, 
+                            0xBFF00000
                         }, 
 
                         Package (0x07)
@@ -56989,7 +57079,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
 
             Method (_ROM, 3, NotSerialized)  // _ROM: Read-Only Memory
             {
-                Name (PCFG, Buffer (0x1090)
+                Name (PCFG, Buffer (0x10AD)
                 {
                     /* 0000 */  0x3C, 0x3F, 0x78, 0x6D, 0x6C, 0x20, 0x76, 0x65,  // <?xml ve
                     /* 0008 */  0x72, 0x73, 0x69, 0x6F, 0x6E, 0x3D, 0x22, 0x31,  // rsion="1
@@ -57397,130 +57487,134 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                     /* 0C98 */  0x20, 0x20, 0x3C, 0x2F, 0x44, 0x53, 0x49, 0x43,  //   </DSIC
                     /* 0CA0 */  0x6F, 0x6E, 0x74, 0x72, 0x6F, 0x6C, 0x6C, 0x65,  // ontrolle
                     /* 0CA8 */  0x72, 0x4D, 0x61, 0x70, 0x70, 0x69, 0x6E, 0x67,  // rMapping
-                    /* 0CB0 */  0x3E, 0x0A, 0x3C, 0x2F, 0x47, 0x72, 0x6F, 0x75,  // >.</Grou
-                    /* 0CB8 */  0x70, 0x3E, 0x0A, 0x3C, 0x44, 0x53, 0x49, 0x49,  // p>.<DSII
-                    /* 0CC0 */  0x6E, 0x69, 0x74, 0x53, 0x65, 0x71, 0x75, 0x65,  // nitSeque
-                    /* 0CC8 */  0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // nce>.   
-                    /* 0CD0 */  0x32, 0x33, 0x20, 0x30, 0x41, 0x20, 0x30, 0x32,  // 23 0A 02
-                    /* 0CD8 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x46,  // .   23 F
-                    /* 0CE0 */  0x46, 0x20, 0x30, 0x37, 0x0A, 0x20, 0x20, 0x20,  // F 07.   
-                    /* 0CE8 */  0x32, 0x33, 0x20, 0x31, 0x36, 0x20, 0x30, 0x31,  // 23 16 01
-                    /* 0CF0 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x46,  // .   23 F
-                    /* 0CF8 */  0x46, 0x20, 0x30, 0x30, 0x0A, 0x20, 0x20, 0x20,  // F 00.   
-                    /* 0D00 */  0x32, 0x33, 0x20, 0x31, 0x30, 0x20, 0x38, 0x30,  // 23 10 80
-                    /* 0D08 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x31,  // .   23 1
-                    /* 0D10 */  0x32, 0x20, 0x34, 0x33, 0x0A, 0x20, 0x20, 0x20,  // 2 43.   
-                    /* 0D18 */  0x32, 0x33, 0x20, 0x31, 0x33, 0x20, 0x34, 0x33,  // 23 13 43
-                    /* 0D20 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x35,  // .   23 5
-                    /* 0D28 */  0x41, 0x20, 0x30, 0x34, 0x0A, 0x20, 0x20, 0x20,  // A 04.   
-                    /* 0D30 */  0x32, 0x33, 0x20, 0x35, 0x43, 0x20, 0x30, 0x31,  // 23 5C 01
-                    /* 0D38 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x39,  // .   23 9
-                    /* 0D40 */  0x34, 0x20, 0x32, 0x30, 0x0A, 0x20, 0x20, 0x20,  // 4 20.   
-                    /* 0D48 */  0x32, 0x33, 0x20, 0x30, 0x44, 0x20, 0x30, 0x31,  // 23 0D 01
-                    /* 0D50 */  0x0A, 0x20, 0x20, 0x20, 0x46, 0x46, 0x20, 0x30,  // .   FF 0
-                    /* 0D58 */  0x41, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // A.   23 
-                    /* 0D60 */  0x39, 0x35, 0x20, 0x30, 0x30, 0x0A, 0x20, 0x20,  // 95 00.  
-                    /* 0D68 */  0x20, 0x46, 0x46, 0x20, 0x30, 0x41, 0x0A, 0x20,  //  FF 0A. 
-                    /* 0D70 */  0x20, 0x20, 0x32, 0x33, 0x20, 0x39, 0x36, 0x20,  //   23 96 
-                    /* 0D78 */  0x30, 0x32, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33,  // 02.   23
-                    /* 0D80 */  0x20, 0x39, 0x33, 0x20, 0x33, 0x34, 0x0A, 0x20,  //  93 34. 
-                    /* 0D88 */  0x20, 0x20, 0x32, 0x33, 0x20, 0x39, 0x36, 0x20,  //   23 96 
-                    /* 0D90 */  0x30, 0x41, 0x0A, 0x20, 0x20, 0x20, 0x46, 0x46,  // 0A.   FF
-                    /* 0D98 */  0x20, 0x31, 0x34, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  14.   2
-                    /* 0DA0 */  0x33, 0x20, 0x32, 0x30, 0x20, 0x33, 0x38, 0x0A,  // 3 20 38.
-                    /* 0DA8 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32, 0x31,  //    23 21
-                    /* 0DB0 */  0x20, 0x30, 0x34, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  04.   2
-                    /* 0DB8 */  0x33, 0x20, 0x32, 0x32, 0x20, 0x33, 0x38, 0x0A,  // 3 22 38.
-                    /* 0DC0 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32, 0x33,  //    23 23
-                    /* 0DC8 */  0x20, 0x30, 0x34, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  04.   2
-                    /* 0DD0 */  0x33, 0x20, 0x32, 0x34, 0x20, 0x41, 0x30, 0x0A,  // 3 24 A0.
-                    /* 0DD8 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32, 0x35,  //    23 25
-                    /* 0DE0 */  0x20, 0x30, 0x35, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  05.   2
-                    /* 0DE8 */  0x33, 0x20, 0x32, 0x43, 0x20, 0x32, 0x30, 0x0A,  // 3 2C 20.
-                    /* 0DF0 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32, 0x44,  //    23 2D
-                    /* 0DF8 */  0x20, 0x30, 0x30, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  00.   2
-                    /* 0E00 */  0x33, 0x20, 0x33, 0x30, 0x20, 0x30, 0x36, 0x0A,  // 3 30 06.
-                    /* 0E08 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33, 0x31,  //    23 31
-                    /* 0E10 */  0x20, 0x30, 0x30, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  00.   2
-                    /* 0E18 */  0x33, 0x20, 0x33, 0x34, 0x20, 0x35, 0x30, 0x0A,  // 3 34 50.
-                    /* 0E20 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33, 0x36,  //    23 36
-                    /* 0E28 */  0x20, 0x32, 0x33, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  23.   2
-                    /* 0E30 */  0x33, 0x20, 0x33, 0x38, 0x20, 0x33, 0x30, 0x0A,  // 3 38 30.
-                    /* 0E38 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33, 0x41,  //    23 3A
-                    /* 0E40 */  0x20, 0x30, 0x33, 0x0A, 0x3C, 0x2F, 0x44, 0x53,  //  03.</DS
-                    /* 0E48 */  0x49, 0x49, 0x6E, 0x69, 0x74, 0x53, 0x65, 0x71,  // IInitSeq
-                    /* 0E50 */  0x75, 0x65, 0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x3C,  // uence>.<
-                    /* 0E58 */  0x44, 0x53, 0x49, 0x54, 0x65, 0x72, 0x6D, 0x53,  // DSITermS
-                    /* 0E60 */  0x65, 0x71, 0x75, 0x65, 0x6E, 0x63, 0x65, 0x3E,  // equence>
-                    /* 0E68 */  0x0A, 0x20, 0x20, 0x20, 0x30, 0x35, 0x20, 0x32,  // .   05 2
-                    /* 0E70 */  0x38, 0x20, 0x30, 0x30, 0x0A, 0x20, 0x20, 0x20,  // 8 00.   
-                    /* 0E78 */  0x46, 0x46, 0x20, 0x32, 0x30, 0x0A, 0x20, 0x20,  // FF 20.  
-                    /* 0E80 */  0x20, 0x30, 0x35, 0x20, 0x31, 0x30, 0x20, 0x30,  //  05 10 0
-                    /* 0E88 */  0x30, 0x0A, 0x20, 0x20, 0x20, 0x46, 0x46, 0x20,  // 0.   FF 
-                    /* 0E90 */  0x38, 0x30, 0x0A, 0x3C, 0x2F, 0x44, 0x53, 0x49,  // 80.</DSI
-                    /* 0E98 */  0x54, 0x65, 0x72, 0x6D, 0x53, 0x65, 0x71, 0x75,  // TermSequ
-                    /* 0EA0 */  0x65, 0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x3C, 0x47,  // ence>.<G
-                    /* 0EA8 */  0x72, 0x6F, 0x75, 0x70, 0x20, 0x69, 0x64, 0x3D,  // roup id=
-                    /* 0EB0 */  0x27, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67,  // 'Backlig
-                    /* 0EB8 */  0x68, 0x74, 0x20, 0x43, 0x6F, 0x6E, 0x66, 0x69,  // ht Confi
-                    /* 0EC0 */  0x67, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6F, 0x6E,  // guration
-                    /* 0EC8 */  0x27, 0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C,  // '>.    <
-                    /* 0ED0 */  0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67, 0x68,  // Backligh
-                    /* 0ED8 */  0x74, 0x54, 0x79, 0x70, 0x65, 0x3E, 0x34, 0x3C,  // tType>4<
-                    /* 0EE0 */  0x2F, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67,  // /Backlig
-                    /* 0EE8 */  0x68, 0x74, 0x54, 0x79, 0x70, 0x65, 0x3E, 0x0A,  // htType>.
-                    /* 0EF0 */  0x20, 0x20, 0x20, 0x20, 0x3C, 0x42, 0x61, 0x63,  //     <Bac
-                    /* 0EF8 */  0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x44, 0x65,  // klightDe
-                    /* 0F00 */  0x66, 0x61, 0x75, 0x6C, 0x74, 0x3E, 0x35, 0x30,  // fault>50
-                    /* 0F08 */  0x3C, 0x2F, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69,  // </Backli
-                    /* 0F10 */  0x67, 0x68, 0x74, 0x44, 0x65, 0x66, 0x61, 0x75,  // ghtDefau
-                    /* 0F18 */  0x6C, 0x74, 0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20,  // lt>.    
-                    /* 0F20 */  0x3C, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67,  // <Backlig
-                    /* 0F28 */  0x68, 0x74, 0x53, 0x74, 0x65, 0x70, 0x73, 0x3E,  // htSteps>
-                    /* 0F30 */  0x31, 0x30, 0x30, 0x3C, 0x2F, 0x42, 0x61, 0x63,  // 100</Bac
-                    /* 0F38 */  0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x53, 0x74,  // klightSt
-                    /* 0F40 */  0x65, 0x70, 0x73, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // eps>.   
-                    /* 0F48 */  0x20, 0x3C, 0x44, 0x69, 0x73, 0x70, 0x6C, 0x61,  //  <Displa
-                    /* 0F50 */  0x79, 0x50, 0x72, 0x69, 0x6D, 0x61, 0x72, 0x79,  // yPrimary
-                    /* 0F58 */  0x46, 0x6C, 0x61, 0x67, 0x73, 0x3E, 0x30, 0x78,  // Flags>0x
-                    /* 0F60 */  0x34, 0x3C, 0x2F, 0x44, 0x69, 0x73, 0x70, 0x6C,  // 4</Displ
-                    /* 0F68 */  0x61, 0x79, 0x50, 0x72, 0x69, 0x6D, 0x61, 0x72,  // ayPrimar
-                    /* 0F70 */  0x79, 0x46, 0x6C, 0x61, 0x67, 0x73, 0x3E, 0x0A,  // yFlags>.
-                    /* 0F78 */  0x20, 0x20, 0x20, 0x20, 0x3C, 0x43, 0x41, 0x42,  //     <CAB
-                    /* 0F80 */  0x4C, 0x45, 0x6E, 0x61, 0x62, 0x6C, 0x65, 0x3E,  // LEnable>
-                    /* 0F88 */  0x46, 0x61, 0x6C, 0x73, 0x65, 0x3C, 0x2F, 0x43,  // False</C
-                    /* 0F90 */  0x41, 0x42, 0x4C, 0x45, 0x6E, 0x61, 0x62, 0x6C,  // ABLEnabl
-                    /* 0F98 */  0x65, 0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C,  // e>.    <
-                    /* 0FA0 */  0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6E, 0x65,  // Brightne
-                    /* 0FA8 */  0x73, 0x73, 0x4D, 0x69, 0x6E, 0x4C, 0x75, 0x6D,  // ssMinLum
-                    /* 0FB0 */  0x69, 0x6E, 0x61, 0x6E, 0x63, 0x65, 0x3E, 0x32,  // inance>2
-                    /* 0FB8 */  0x30, 0x30, 0x30, 0x3C, 0x2F, 0x42, 0x72, 0x69,  // 000</Bri
+                    /* 0CB0 */  0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C, 0x44,  // >.    <D
+                    /* 0CB8 */  0x53, 0x49, 0x46, 0x6C, 0x61, 0x67, 0x73, 0x3E,  // SIFlags>
+                    /* 0CC0 */  0x30, 0x78, 0x32, 0x3C, 0x2F, 0x44, 0x53, 0x49,  // 0x2</DSI
+                    /* 0CC8 */  0x46, 0x6C, 0x61, 0x67, 0x73, 0x3E, 0x0A, 0x3C,  // Flags>.<
+                    /* 0CD0 */  0x2F, 0x47, 0x72, 0x6F, 0x75, 0x70, 0x3E, 0x0A,  // /Group>.
+                    /* 0CD8 */  0x3C, 0x44, 0x53, 0x49, 0x49, 0x6E, 0x69, 0x74,  // <DSIInit
+                    /* 0CE0 */  0x53, 0x65, 0x71, 0x75, 0x65, 0x6E, 0x63, 0x65,  // Sequence
+                    /* 0CE8 */  0x3E, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // >.   23 
+                    /* 0CF0 */  0x30, 0x41, 0x20, 0x30, 0x32, 0x0A, 0x20, 0x20,  // 0A 02.  
+                    /* 0CF8 */  0x20, 0x32, 0x33, 0x20, 0x46, 0x46, 0x20, 0x30,  //  23 FF 0
+                    /* 0D00 */  0x37, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // 7.   23 
+                    /* 0D08 */  0x31, 0x36, 0x20, 0x30, 0x31, 0x0A, 0x20, 0x20,  // 16 01.  
+                    /* 0D10 */  0x20, 0x32, 0x33, 0x20, 0x46, 0x46, 0x20, 0x30,  //  23 FF 0
+                    /* 0D18 */  0x30, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // 0.   23 
+                    /* 0D20 */  0x31, 0x30, 0x20, 0x38, 0x30, 0x0A, 0x20, 0x20,  // 10 80.  
+                    /* 0D28 */  0x20, 0x32, 0x33, 0x20, 0x31, 0x32, 0x20, 0x34,  //  23 12 4
+                    /* 0D30 */  0x33, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // 3.   23 
+                    /* 0D38 */  0x31, 0x33, 0x20, 0x34, 0x33, 0x0A, 0x20, 0x20,  // 13 43.  
+                    /* 0D40 */  0x20, 0x32, 0x33, 0x20, 0x35, 0x41, 0x20, 0x30,  //  23 5A 0
+                    /* 0D48 */  0x34, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // 4.   23 
+                    /* 0D50 */  0x35, 0x43, 0x20, 0x30, 0x31, 0x0A, 0x20, 0x20,  // 5C 01.  
+                    /* 0D58 */  0x20, 0x32, 0x33, 0x20, 0x39, 0x34, 0x20, 0x32,  //  23 94 2
+                    /* 0D60 */  0x30, 0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20,  // 0.   23 
+                    /* 0D68 */  0x30, 0x44, 0x20, 0x30, 0x31, 0x0A, 0x20, 0x20,  // 0D 01.  
+                    /* 0D70 */  0x20, 0x46, 0x46, 0x20, 0x30, 0x41, 0x0A, 0x20,  //  FF 0A. 
+                    /* 0D78 */  0x20, 0x20, 0x32, 0x33, 0x20, 0x39, 0x35, 0x20,  //   23 95 
+                    /* 0D80 */  0x30, 0x30, 0x0A, 0x20, 0x20, 0x20, 0x46, 0x46,  // 00.   FF
+                    /* 0D88 */  0x20, 0x30, 0x41, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  0A.   2
+                    /* 0D90 */  0x33, 0x20, 0x39, 0x36, 0x20, 0x30, 0x32, 0x0A,  // 3 96 02.
+                    /* 0D98 */  0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x39, 0x33,  //    23 93
+                    /* 0DA0 */  0x20, 0x33, 0x34, 0x0A, 0x20, 0x20, 0x20, 0x32,  //  34.   2
+                    /* 0DA8 */  0x33, 0x20, 0x39, 0x36, 0x20, 0x30, 0x41, 0x0A,  // 3 96 0A.
+                    /* 0DB0 */  0x20, 0x20, 0x20, 0x46, 0x46, 0x20, 0x31, 0x34,  //    FF 14
+                    /* 0DB8 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32,  // .   23 2
+                    /* 0DC0 */  0x30, 0x20, 0x33, 0x38, 0x0A, 0x20, 0x20, 0x20,  // 0 38.   
+                    /* 0DC8 */  0x32, 0x33, 0x20, 0x32, 0x31, 0x20, 0x30, 0x34,  // 23 21 04
+                    /* 0DD0 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32,  // .   23 2
+                    /* 0DD8 */  0x32, 0x20, 0x33, 0x38, 0x0A, 0x20, 0x20, 0x20,  // 2 38.   
+                    /* 0DE0 */  0x32, 0x33, 0x20, 0x32, 0x33, 0x20, 0x30, 0x34,  // 23 23 04
+                    /* 0DE8 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32,  // .   23 2
+                    /* 0DF0 */  0x34, 0x20, 0x41, 0x30, 0x0A, 0x20, 0x20, 0x20,  // 4 A0.   
+                    /* 0DF8 */  0x32, 0x33, 0x20, 0x32, 0x35, 0x20, 0x30, 0x35,  // 23 25 05
+                    /* 0E00 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x32,  // .   23 2
+                    /* 0E08 */  0x43, 0x20, 0x32, 0x30, 0x0A, 0x20, 0x20, 0x20,  // C 20.   
+                    /* 0E10 */  0x32, 0x33, 0x20, 0x32, 0x44, 0x20, 0x30, 0x30,  // 23 2D 00
+                    /* 0E18 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33,  // .   23 3
+                    /* 0E20 */  0x30, 0x20, 0x30, 0x36, 0x0A, 0x20, 0x20, 0x20,  // 0 06.   
+                    /* 0E28 */  0x32, 0x33, 0x20, 0x33, 0x31, 0x20, 0x30, 0x30,  // 23 31 00
+                    /* 0E30 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33,  // .   23 3
+                    /* 0E38 */  0x34, 0x20, 0x35, 0x30, 0x0A, 0x20, 0x20, 0x20,  // 4 50.   
+                    /* 0E40 */  0x32, 0x33, 0x20, 0x33, 0x36, 0x20, 0x32, 0x33,  // 23 36 23
+                    /* 0E48 */  0x0A, 0x20, 0x20, 0x20, 0x32, 0x33, 0x20, 0x33,  // .   23 3
+                    /* 0E50 */  0x38, 0x20, 0x33, 0x30, 0x0A, 0x20, 0x20, 0x20,  // 8 30.   
+                    /* 0E58 */  0x32, 0x33, 0x20, 0x33, 0x41, 0x20, 0x30, 0x33,  // 23 3A 03
+                    /* 0E60 */  0x0A, 0x3C, 0x2F, 0x44, 0x53, 0x49, 0x49, 0x6E,  // .</DSIIn
+                    /* 0E68 */  0x69, 0x74, 0x53, 0x65, 0x71, 0x75, 0x65, 0x6E,  // itSequen
+                    /* 0E70 */  0x63, 0x65, 0x3E, 0x0A, 0x3C, 0x44, 0x53, 0x49,  // ce>.<DSI
+                    /* 0E78 */  0x54, 0x65, 0x72, 0x6D, 0x53, 0x65, 0x71, 0x75,  // TermSequ
+                    /* 0E80 */  0x65, 0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x20, 0x20,  // ence>.  
+                    /* 0E88 */  0x20, 0x30, 0x35, 0x20, 0x32, 0x38, 0x20, 0x30,  //  05 28 0
+                    /* 0E90 */  0x30, 0x0A, 0x20, 0x20, 0x20, 0x46, 0x46, 0x20,  // 0.   FF 
+                    /* 0E98 */  0x32, 0x30, 0x0A, 0x20, 0x20, 0x20, 0x30, 0x35,  // 20.   05
+                    /* 0EA0 */  0x20, 0x31, 0x30, 0x20, 0x30, 0x30, 0x0A, 0x20,  //  10 00. 
+                    /* 0EA8 */  0x20, 0x20, 0x46, 0x46, 0x20, 0x38, 0x30, 0x0A,  //   FF 80.
+                    /* 0EB0 */  0x3C, 0x2F, 0x44, 0x53, 0x49, 0x54, 0x65, 0x72,  // </DSITer
+                    /* 0EB8 */  0x6D, 0x53, 0x65, 0x71, 0x75, 0x65, 0x6E, 0x63,  // mSequenc
+                    /* 0EC0 */  0x65, 0x3E, 0x0A, 0x3C, 0x47, 0x72, 0x6F, 0x75,  // e>.<Grou
+                    /* 0EC8 */  0x70, 0x20, 0x69, 0x64, 0x3D, 0x27, 0x42, 0x61,  // p id='Ba
+                    /* 0ED0 */  0x63, 0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x20,  // cklight 
+                    /* 0ED8 */  0x43, 0x6F, 0x6E, 0x66, 0x69, 0x67, 0x75, 0x72,  // Configur
+                    /* 0EE0 */  0x61, 0x74, 0x69, 0x6F, 0x6E, 0x27, 0x3E, 0x0A,  // ation'>.
+                    /* 0EE8 */  0x20, 0x20, 0x20, 0x20, 0x3C, 0x42, 0x61, 0x63,  //     <Bac
+                    /* 0EF0 */  0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x54, 0x79,  // klightTy
+                    /* 0EF8 */  0x70, 0x65, 0x3E, 0x34, 0x3C, 0x2F, 0x42, 0x61,  // pe>4</Ba
+                    /* 0F00 */  0x63, 0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x54,  // cklightT
+                    /* 0F08 */  0x79, 0x70, 0x65, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // ype>.   
+                    /* 0F10 */  0x20, 0x3C, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69,  //  <Backli
+                    /* 0F18 */  0x67, 0x68, 0x74, 0x44, 0x65, 0x66, 0x61, 0x75,  // ghtDefau
+                    /* 0F20 */  0x6C, 0x74, 0x3E, 0x35, 0x30, 0x3C, 0x2F, 0x42,  // lt>50</B
+                    /* 0F28 */  0x61, 0x63, 0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74,  // acklight
+                    /* 0F30 */  0x44, 0x65, 0x66, 0x61, 0x75, 0x6C, 0x74, 0x3E,  // Default>
+                    /* 0F38 */  0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C, 0x42, 0x61,  // .    <Ba
+                    /* 0F40 */  0x63, 0x6B, 0x6C, 0x69, 0x67, 0x68, 0x74, 0x53,  // cklightS
+                    /* 0F48 */  0x74, 0x65, 0x70, 0x73, 0x3E, 0x31, 0x30, 0x30,  // teps>100
+                    /* 0F50 */  0x3C, 0x2F, 0x42, 0x61, 0x63, 0x6B, 0x6C, 0x69,  // </Backli
+                    /* 0F58 */  0x67, 0x68, 0x74, 0x53, 0x74, 0x65, 0x70, 0x73,  // ghtSteps
+                    /* 0F60 */  0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C, 0x44,  // >.    <D
+                    /* 0F68 */  0x69, 0x73, 0x70, 0x6C, 0x61, 0x79, 0x50, 0x72,  // isplayPr
+                    /* 0F70 */  0x69, 0x6D, 0x61, 0x72, 0x79, 0x46, 0x6C, 0x61,  // imaryFla
+                    /* 0F78 */  0x67, 0x73, 0x3E, 0x30, 0x78, 0x34, 0x3C, 0x2F,  // gs>0x4</
+                    /* 0F80 */  0x44, 0x69, 0x73, 0x70, 0x6C, 0x61, 0x79, 0x50,  // DisplayP
+                    /* 0F88 */  0x72, 0x69, 0x6D, 0x61, 0x72, 0x79, 0x46, 0x6C,  // rimaryFl
+                    /* 0F90 */  0x61, 0x67, 0x73, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // ags>.   
+                    /* 0F98 */  0x20, 0x3C, 0x43, 0x41, 0x42, 0x4C, 0x45, 0x6E,  //  <CABLEn
+                    /* 0FA0 */  0x61, 0x62, 0x6C, 0x65, 0x3E, 0x46, 0x61, 0x6C,  // able>Fal
+                    /* 0FA8 */  0x73, 0x65, 0x3C, 0x2F, 0x43, 0x41, 0x42, 0x4C,  // se</CABL
+                    /* 0FB0 */  0x45, 0x6E, 0x61, 0x62, 0x6C, 0x65, 0x3E, 0x0A,  // Enable>.
+                    /* 0FB8 */  0x20, 0x20, 0x20, 0x20, 0x3C, 0x42, 0x72, 0x69,  //     <Bri
                     /* 0FC0 */  0x67, 0x68, 0x74, 0x6E, 0x65, 0x73, 0x73, 0x4D,  // ghtnessM
                     /* 0FC8 */  0x69, 0x6E, 0x4C, 0x75, 0x6D, 0x69, 0x6E, 0x61,  // inLumina
-                    /* 0FD0 */  0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // nce>.   
-                    /* 0FD8 */  0x20, 0x3C, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74,  //  <Bright
-                    /* 0FE0 */  0x6E, 0x65, 0x73, 0x73, 0x4D, 0x61, 0x78, 0x4C,  // nessMaxL
+                    /* 0FD0 */  0x6E, 0x63, 0x65, 0x3E, 0x32, 0x30, 0x30, 0x30,  // nce>2000
+                    /* 0FD8 */  0x3C, 0x2F, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74,  // </Bright
+                    /* 0FE0 */  0x6E, 0x65, 0x73, 0x73, 0x4D, 0x69, 0x6E, 0x4C,  // nessMinL
                     /* 0FE8 */  0x75, 0x6D, 0x69, 0x6E, 0x61, 0x6E, 0x63, 0x65,  // uminance
-                    /* 0FF0 */  0x3E, 0x33, 0x36, 0x30, 0x30, 0x30, 0x30, 0x3C,  // >360000<
-                    /* 0FF8 */  0x2F, 0x42, 0x72, 0x69, 0x67, 0x68, 0x74, 0x6E,  // /Brightn
-                    /* 1000 */  0x65, 0x73, 0x73, 0x4D, 0x61, 0x78, 0x4C, 0x75,  // essMaxLu
-                    /* 1008 */  0x6D, 0x69, 0x6E, 0x61, 0x6E, 0x63, 0x65, 0x3E,  // minance>
-                    /* 1010 */  0x0A, 0x3C, 0x2F, 0x47, 0x72, 0x6F, 0x75, 0x70,  // .</Group
-                    /* 1018 */  0x3E, 0x0A, 0x3C, 0x47, 0x72, 0x6F, 0x75, 0x70,  // >.<Group
-                    /* 1020 */  0x20, 0x69, 0x64, 0x3D, 0x27, 0x43, 0x6F, 0x6E,  //  id='Con
-                    /* 1028 */  0x6E, 0x65, 0x63, 0x74, 0x69, 0x6F, 0x6E, 0x20,  // nection 
-                    /* 1030 */  0x43, 0x6F, 0x6E, 0x66, 0x69, 0x67, 0x75, 0x72,  // Configur
-                    /* 1038 */  0x61, 0x74, 0x69, 0x6F, 0x6E, 0x27, 0x3E, 0x0A,  // ation'>.
-                    /* 1040 */  0x20, 0x20, 0x20, 0x20, 0x3C, 0x44, 0x69, 0x73,  //     <Dis
-                    /* 1048 */  0x70, 0x6C, 0x61, 0x79, 0x31, 0x52, 0x65, 0x73,  // play1Res
-                    /* 1050 */  0x65, 0x74, 0x31, 0x49, 0x6E, 0x66, 0x6F, 0x3E,  // et1Info>
-                    /* 1058 */  0x44, 0x53, 0x49, 0x5F, 0x50, 0x41, 0x4E, 0x45,  // DSI_PANE
-                    /* 1060 */  0x4C, 0x5F, 0x52, 0x45, 0x53, 0x45, 0x54, 0x2C,  // L_RESET,
-                    /* 1068 */  0x20, 0x30, 0x2C, 0x20, 0x30, 0x2C, 0x20, 0x31,  //  0, 0, 1
-                    /* 1070 */  0x3C, 0x2F, 0x44, 0x69, 0x73, 0x70, 0x6C, 0x61,  // </Displa
-                    /* 1078 */  0x79, 0x31, 0x52, 0x65, 0x73, 0x65, 0x74, 0x31,  // y1Reset1
-                    /* 1080 */  0x49, 0x6E, 0x66, 0x6F, 0x3E, 0x0A, 0x3C, 0x2F,  // Info>.</
-                    /* 1088 */  0x47, 0x72, 0x6F, 0x75, 0x70, 0x3E, 0x0A, 0x00   // Group>..
+                    /* 0FF0 */  0x3E, 0x0A, 0x20, 0x20, 0x20, 0x20, 0x3C, 0x42,  // >.    <B
+                    /* 0FF8 */  0x72, 0x69, 0x67, 0x68, 0x74, 0x6E, 0x65, 0x73,  // rightnes
+                    /* 1000 */  0x73, 0x4D, 0x61, 0x78, 0x4C, 0x75, 0x6D, 0x69,  // sMaxLumi
+                    /* 1008 */  0x6E, 0x61, 0x6E, 0x63, 0x65, 0x3E, 0x33, 0x36,  // nance>36
+                    /* 1010 */  0x30, 0x30, 0x30, 0x30, 0x3C, 0x2F, 0x42, 0x72,  // 0000</Br
+                    /* 1018 */  0x69, 0x67, 0x68, 0x74, 0x6E, 0x65, 0x73, 0x73,  // ightness
+                    /* 1020 */  0x4D, 0x61, 0x78, 0x4C, 0x75, 0x6D, 0x69, 0x6E,  // MaxLumin
+                    /* 1028 */  0x61, 0x6E, 0x63, 0x65, 0x3E, 0x0A, 0x3C, 0x2F,  // ance>.</
+                    /* 1030 */  0x47, 0x72, 0x6F, 0x75, 0x70, 0x3E, 0x0A, 0x3C,  // Group>.<
+                    /* 1038 */  0x47, 0x72, 0x6F, 0x75, 0x70, 0x20, 0x69, 0x64,  // Group id
+                    /* 1040 */  0x3D, 0x27, 0x43, 0x6F, 0x6E, 0x6E, 0x65, 0x63,  // ='Connec
+                    /* 1048 */  0x74, 0x69, 0x6F, 0x6E, 0x20, 0x43, 0x6F, 0x6E,  // tion Con
+                    /* 1050 */  0x66, 0x69, 0x67, 0x75, 0x72, 0x61, 0x74, 0x69,  // figurati
+                    /* 1058 */  0x6F, 0x6E, 0x27, 0x3E, 0x0A, 0x20, 0x20, 0x20,  // on'>.   
+                    /* 1060 */  0x20, 0x3C, 0x44, 0x69, 0x73, 0x70, 0x6C, 0x61,  //  <Displa
+                    /* 1068 */  0x79, 0x31, 0x52, 0x65, 0x73, 0x65, 0x74, 0x31,  // y1Reset1
+                    /* 1070 */  0x49, 0x6E, 0x66, 0x6F, 0x3E, 0x44, 0x53, 0x49,  // Info>DSI
+                    /* 1078 */  0x5F, 0x50, 0x41, 0x4E, 0x45, 0x4C, 0x5F, 0x52,  // _PANEL_R
+                    /* 1080 */  0x45, 0x53, 0x45, 0x54, 0x2C, 0x20, 0x30, 0x2C,  // ESET, 0,
+                    /* 1088 */  0x20, 0x30, 0x2C, 0x20, 0x31, 0x3C, 0x2F, 0x44,  //  0, 1</D
+                    /* 1090 */  0x69, 0x73, 0x70, 0x6C, 0x61, 0x79, 0x31, 0x52,  // isplay1R
+                    /* 1098 */  0x65, 0x73, 0x65, 0x74, 0x31, 0x49, 0x6E, 0x66,  // eset1Inf
+                    /* 10A0 */  0x6F, 0x3E, 0x0A, 0x3C, 0x2F, 0x47, 0x72, 0x6F,  // o>.</Gro
+                    /* 10A8 */  0x75, 0x70, 0x3E, 0x0A, 0x00                     // up>..
                 })
                 Local2 = PCFG /* \_SB_.GPU0._ROM.PCFG */
                 If ((Arg0 >= SizeOf (Local2)))
@@ -58067,7 +58161,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
 
             Method (REGR, 0, NotSerialized)
             {
-                Name (RBUF, Package (0x1B)
+                Name (RBUF, Package (0x1A)
                 {
                     Package (0x02)
                     {
@@ -58120,7 +58214,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                     Package (0x02)
                     {
                         "DisableCDI", 
-                        One
+                        Zero
                     }, 
 
                     Package (0x02)
@@ -58162,7 +58256,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                     Package (0x02)
                     {
                         "SupportsSHMBridge", 
-                        Zero
+                        One
                     }, 
 
                     Package (0x02)
@@ -58201,15 +58295,9 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         One
                     }, 
 
-                    Package (0x06)
+                    Package (0x05)
                     {
                         "GRAPHICS", 
-                        Package (0x02)
-                        {
-                            "ForceActive", 
-                            Zero
-                        }, 
-
                         Package (0x02)
                         {
                             "EnableSystemCache", 
@@ -58285,12 +58373,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             "A6x", 
                             Package (0x02)
                             {
-                                "SleepMode", 
-                                Zero
-                            }, 
-
-                            Package (0x02)
-                            {
                                 "DisableICG", 
                                 Zero
                             }, 
@@ -58311,25 +58393,19 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             {
                                 "DisableCPCrashDump", 
                                 Zero
+                            }, 
+
+                            Package (0x02)
+                            {
+                                "Preemption", 
+                                0x1A
                             }
                         }
                     }, 
 
-                    Package (0x04)
+                    Package (0x02)
                     {
                         "VIDEO", 
-                        Package (0x02)
-                        {
-                            "ForceActive", 
-                            Zero
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "PreventPowerCollapse", 
-                            Zero
-                        }, 
-
                         Package (0x02)
                         {
                             "EnableSystemCache", 
@@ -58344,22 +58420,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                         {
                             "EnableCryptoVA", 
                             One
-                        }
-                    }, 
-
-                    Package (0x03)
-                    {
-                        "VIDEO_ENCODER", 
-                        Package (0x02)
-                        {
-                            "ForceActive", 
-                            Zero
-                        }, 
-
-                        Package (0x02)
-                        {
-                            "PreventPowerCollapse", 
-                            Zero
                         }
                     }, 
 
@@ -58419,19 +58479,23 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             Name (_HID, "QCOM02BB")  // _HID: Hardware ID
             Alias (\_SB.PSUB, _SUB)
             Name (_UID, Zero)  // _UID: Unique ID
-            Method (MCGT, 0, NotSerialized)
+            Method (IMPT, 0, NotSerialized)
             {
-                Name (TPKG, Package (0x01)
+                Name (TPPK, Package (0x01)
                 {
-                    Package (0x02)
+                    Package (0x04)
                     {
+                        Zero, 
+                        Zero, 
                         Zero, 
                         Zero
                     }
                 })
-                DerefOf (TPKG [Zero]) [Zero] = TCMA /* \_SB_.TCMA */
-                DerefOf (TPKG [Zero]) [One] = TCML /* \_SB_.TCML */
-                Return (TPKG) /* \_SB_.TREE.MCGT.TPKG */
+                DerefOf (TPPK [Zero]) [Zero] = TPMA /* \_SB_.TPMA */
+                DerefOf (TPPK [Zero]) [One] = TDTV /* \_SB_.TDTV */
+                DerefOf (TPPK [Zero]) [0x02] = TCMA /* \_SB_.TCMA */
+                DerefOf (TPPK [Zero]) [0x03] = TCML /* \_SB_.TCML */
+                Return (TPPK) /* \_SB_.TREE.IMPT.TPPK */
             }
         }
 
@@ -58525,7 +58589,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                     {
                         0x00000236,
                     }
-                    Interrupt (ResourceConsumer, Edge, ActiveHigh, Shared, ,, )
+                    Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
                     {
                         0x0000023D,
                     }
@@ -58805,7 +58869,9 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             PDT0 = 0x04
             PPDC = One
             QECE = 0x14
+            QCCS = 0x30
             QCPI = 0x07
+            QCCC = 0x06
             QCLC = One
             QCRC = 0x20
             QCVT = Zero
@@ -58830,10 +58896,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             QPR0 = 0x16
             QPC0 = 0x36
             QCCM = One
-            QCCC = 0x16
-            QCCS = 0x33
             QSCC = 0x02
-            QSBE = 0x07
+            QSBE = 0x06
             QSES = 0x04
             QIG1 = Zero
             QIG0 = 0x3F
@@ -58850,7 +58914,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             QTDE = 0x10
             QTM1 = 0x06
             QRSC = 0x03
-            QRSE = 0x1C
+            QRSE = 0x10
             QRDC = 0x14
             QRC2 = 0x0E
             QRC3 = 0x04
@@ -58867,7 +58931,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             QRFL = 0x40
             PERD = 0x04
             PMDC = 0x52
-            PMC2 = 0x50
+            PMC2 = 0x10
             PMC4 = 0x1A
             PMC5 = 0x06
             PFC2 = 0x83
@@ -58882,7 +58946,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             PSDM = Zero
             PLTA = One
             PLCD = 0x73
-            PRSL = 0xAA
+            PRSL = 0xBB
             PPSC = 0x03
             PRC1 = 0x0D
             PSC4 = Zero
@@ -59622,6 +59686,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             C1M1,   32, 
             C2M1,   32, 
             C3M1,   32, 
+            Offset (0x98), 
+            BGTR,   32, 
             Offset (0xB4), 
             HCM0,   32, 
             HCM1,   32, 
@@ -59655,7 +59721,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             G0M1,   32, 
             Offset (0x178), 
             HCVT,   32, 
-            Offset (0x1CC), 
+            Offset (0x1C8), 
+            BGCT,   32, 
             HCCS,   32, 
             HCHS,   32, 
             Offset (0x1E0), 
@@ -59854,6 +59921,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             HTP6,   32, 
             Offset (0x15C), 
             HPSG,   32, 
+            Offset (0x16C), 
+            HPG5,   32, 
             Offset (0x174), 
             HTRC,   32, 
             Offset (0x2AC), 
@@ -59970,7 +60039,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             G0M0 = 0x3F
             G0M1 = 0x3F
             HCVT = 0x10
-            HCCS = Zero
+            HCCS = 0x04
             HCHS = 0x30
             HCDV = 0x04
             HCCE = 0x73
@@ -59980,6 +60049,8 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             HCCM = One
             HVD1 = 0x22
             HVD2 = Zero
+            BGTR = 0x20
+            BGCT = 0x07
             L0C0 = Zero
             L0TE = 0x0D
             L0BM = One
@@ -59987,14 +60058,14 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             L0PR = 0x2F
             L0L0 = 0x09
             L0L1 = 0x09
-            L0L2 = 0x1A
+            L0L2 = 0x1B
             L0R1 = One
             L0R2 = 0x07
             L0M0 = 0x31
             L0M1 = 0x31
             L0M2 = 0x03
             L0CD = 0x02
-            L0VD = One
+            L0VD = Zero
             L0X0 = 0x12
             L0TT = 0x25
             L0OT = Zero
@@ -60006,34 +60077,34 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             L0OG = 0x04
             L0PG = 0x09
             L0EI = 0x15
-            L0DI = 0x32
+            L0DI = 0x28
             L0B0 = 0x7F
             L0B1 = 0x07
             L0T1 = 0x04
             L0RC = 0x70
-            L0F0 = 0x08
+            L0F0 = 0x8B
             L0F1 = 0x08
-            L0F2 = 0x09
-            L0S0 = 0x04
+            L0F2 = 0x0A
+            L0S0 = 0x03
             L0S1 = 0x04
-            L0S2 = 0x02
+            L0S2 = 0x04
             L0SC = 0x0C
             L0RB = 0x02
             L0P0 = 0x5C
             L0P1 = 0x3E
             L0P2 = 0x3F
-            L0SE = 0x21
+            L0SE = One
             L0SN = 0xA0
             L0SD = 0x08
             L0DC = One
             L0RE = 0xC3
             L0PC = Zero
-            L0N0 = 0x8C
+            L0N0 = 0xBC
             L0ER = 0x7F
-            L0HI = 0x2A
+            L0HI = 0x15
             L0C1 = 0x0C
             L0C2 = Zero
-            L0RR = 0x02
+            L0RR = 0x04
             L0IN = 0x20
             L1C0 = Zero
             L1TE = 0x0D
@@ -60042,14 +60113,14 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             L1PR = 0x2F
             L1L0 = 0x09
             L1L1 = 0x09
-            L1L2 = 0x1A
+            L1L2 = 0x1B
             L1R1 = One
             L1R2 = 0x07
             L1M0 = 0x31
             L1M1 = 0x31
             L1M2 = 0x03
             L1CD = 0x02
-            L1VD = One
+            L1VD = Zero
             L1X0 = 0x12
             L1TT = 0x25
             L1OT = Zero
@@ -60061,34 +60132,34 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             L1OG = 0x04
             L1PG = 0x09
             L1EI = 0x15
-            L1DI = 0x32
+            L1DI = 0x28
             L1B0 = 0x7F
             L1B1 = 0x07
             L1T1 = 0x04
             L1RC = 0x70
-            L1F0 = 0x08
+            L1F0 = 0x8B
             L1F1 = 0x08
-            L1F2 = 0x09
-            L1S0 = 0x04
+            L1F2 = 0x0A
+            L1S0 = 0x03
             L1S1 = 0x04
-            L1S2 = 0x02
+            L1S2 = 0x04
             L1SC = 0x0C
             L1RB = 0x02
             L1P0 = 0x5C
             L1P1 = 0x3E
             L1P2 = 0x3F
-            L1SE = 0x21
+            L1SE = One
             L1SN = 0xA0
             L1SD = 0x08
             L1DC = One
             L1RE = 0xC3
             L1PC = Zero
-            L1N0 = 0x8C
+            L1N0 = 0xBC
             L1ER = 0x7F
-            L1HI = 0x2A
+            L1HI = 0x15
             L1C1 = 0x0C
             L1C2 = Zero
-            L1RR = 0x02
+            L1RR = 0x04
             L1IN = 0x20
             HPSG = 0x3F
             HTRC = 0x58
@@ -60096,7 +60167,14 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
             HTP3 = 0x07
             HTM6 = 0x17
             HTP6 = 0x09
-            If ((\_SB.SIDV >= 0x00020000)){}
+            HPG5 = 0x9F
+            If ((\_SB.SIDV >= 0x00020000))
+            {
+                L0C2 = 0x0F
+                L1C2 = 0x0F
+                HTRC = 0x50
+            }
+
             HPSR = Zero
             L0ST = One
             L1ST = One
@@ -62664,7 +62742,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                             "\\_SB.GIO0", 0x00, ResourceConsumer, ,
                             )
                             {   // Pin list
-                                0x003C
+                                0x0280
                             }
                     })
                     Return (RBUF) /* \_SB_.WBDI._CRS.RBUF */
@@ -67098,7 +67176,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SDM850 ", 0x00000003)
                                 }
                                 ElseIf ((_T_1 == 0x03))
                                 {
-                                    Return (One)
+                                    Return (Zero)
                                     Break
                                 }
                                 ElseIf ((_T_1 == 0x04))
